@@ -11,7 +11,7 @@ void setup() {
 void draw() {
   for (int i=0; i<columns; i++){
     for (int n=0; n<rows; n++) {
-    ellipse(50+50*i, 50+50*n, 20,20);
+    ellipse((width/2-(20*i))+20*i, (height/2-50*n)+50*n, 20,20);
     }
   }
 }
