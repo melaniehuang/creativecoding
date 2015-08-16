@@ -1,30 +1,29 @@
 int border = 50;
-int num = 5;
-int gap = 40;
+int repetitions = 5;
+int w = 100;
+int h = 100;
+int x = 0;
+int y = 0;
 
 void setup() {
   size(800,800);
   rectMode(CORNER);
   noStroke();
+  frameRate(1);
 }
 
 void draw() {
-  background(255,237,0);
+  background(240);
 
-  for (int i=0; i<num; i++){
-    for (int n=0; n<num; n++) {
-      rect((0+border)+gap*i,(0+border)+gap*n,10,10);
+  for (int i=0; i<repetitions; i++){
+    for (int n=0; n<repetitions; n++) {
+      int x = (int) random(-3, 3); 
+      int y = (int) random(-3, 3); 
+      fill(127,63,62,200);
+      rect((width/2-(5*w/2))+(w*i)+x, (height/2-(5*h/2))+(h*n)+y, w, h);
     }
   }
 }
-
-
-
-
-
-
-
-
 
 
 
