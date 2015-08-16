@@ -17,8 +17,9 @@ void draw() {
 
   for (int i=0; i<repetitions; i++){
     for (int n=0; n<repetitions; n++) {
-      int x = (int) random(-3, 3); 
-      int y = (int) random(-3, 3); 
+      int x = (int) random(-5, 5); 
+      int y = (int) random(-5, 5); 
+      
       fill(127,63,62,200);
       rect((width/2-(5*w/2))+(w*i)+x, (height/2-(5*h/2))+(h*n)+y, w, h);
     }
