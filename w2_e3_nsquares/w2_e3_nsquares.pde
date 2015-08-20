@@ -29,9 +29,7 @@ void draw() {
       }
               
       rect((width/2-(5*w/2))+(w*i)+x, (height/2-(5*h/2))+(h*n)+y, w, h);
-
-        saveFrame("frames/####.jpg");
-
+      saveFrame("frames/####.jpg");
     }
   }
 }
