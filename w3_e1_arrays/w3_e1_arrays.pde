@@ -16,6 +16,7 @@ void draw() {
   drawSquare();
 }
 
+
 int getCoord(int o, int a, int i) {
   return (o/2-((repetitions*a+(repetitions*(gap-1)))/2))+(gap*i)+(a*i);
 }
@@ -23,14 +24,14 @@ int getCoord(int o, int a, int i) {
 void drawSquare() {
   for (int i=0; i<repetitions; i++) {
     for (int n=0; n<repetitions; n++) {
-      int c = (int) random (0,8);
       int x = getCoord(width, w, i);
       int y = getCoord(height, h, n);
-
+      int c = (int) random (0,8);
+      
       noStroke();
       fill(colors[c]);
 
-      rect(x, y, w, h);
+      rect(x, y, w, h);     
     }
   }
  
