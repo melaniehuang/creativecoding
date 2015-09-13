@@ -1,11 +1,13 @@
 float x = 0;
 float y = 200;
 
-float dx;
+float dx = 10;
 float dy;
 
 float radius;
 float a;
+
+int frame = 1;
 
 void setup() {
   background(0); 
@@ -16,37 +18,20 @@ void draw() {
   yellowhill();
 }
 
-void purplehill() {
-  dx = 4; 
-  radius = 10;
-  a = random(0,4);
-     
-  x += dx;
-  y += a * sin(radians(frameCount)*radius);
-    
-  line(x,y,x,height);
-  stroke(255,56,255);
-  
-  if (x > width) {
-    background(0);
-  }
-
-}
-
-void yellowhill() {
-  dx = 4; 
+void yellowhill() {  
   radius = 10;
   a = random(2,6);
-     
+  
   x += dx;
-  y += a * sin(radians(frameCount)*radius);
-    
+  y += 10 * sin(radians(frame++)*radius);
+      
   line(x,y,x,height);
   stroke(255,246,66);
   
   if (x > width) {
-    background(0,100);
+    //background(0,100);
     x = 0;
-    y = 200;
+    y = y - 10;
+    dx += x + 2;
   }
 }
