@@ -3,11 +3,11 @@ float x2, y2;
 float x3, y3;
 float x4, y4;
 
-color from = color(0,166,255);
-color to = color(255,255,255);
+color from = color(173,124,89);
+color to = color(245,239,235);
 float xoff;
 
-int num = 100;
+int num = 10;
 
 
 void setup(){
