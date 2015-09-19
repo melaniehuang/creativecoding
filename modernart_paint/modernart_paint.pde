@@ -7,11 +7,11 @@ color from = color(0,166,255);
 color to = color(255,255,255);
 float xoff;
 
-int num = 30;
-
+int num = 40;
+int circles = 8;
 
 void setup(){
-  size(800,800);
+  size(1200,800);
   noStroke();
   background(0,166,255);
   noLoop();
@@ -51,9 +51,17 @@ void draw(){
       bezier(x1, y1+i, x2, y2+i, x3, y3+i, x4, y4+i);
       stroke(interA,150);  
     }
-    
-    println(num);
-   }  
+   } 
+   
+   for (int e = 0; e < circles; e++) {
+     float ex = random(100, width-100);
+     float ey = random(100, height-100);
+     float r = random(20,55);
+     
+     fill(60);
+     noStroke();
+     ellipse(ex,ey,r,r);
+   } 
 }
 
 void mousePressed() {
