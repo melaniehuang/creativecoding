@@ -32,7 +32,8 @@ void draw(){
      xoff = xoff + 1;
      float n = noise(xoff);   
      noFill();
-     color interA = lerpColor(from, to, n);    
+     color interA = lerpColor(from, to, n);  
+     
      bezier(x1,y1+i,x1+60,y1+i,x2,y2+i,x2+60,y2+i);
      stroke(interA,150);  
    }
