@@ -3,6 +3,7 @@
  * Modern Art series - Melanie Huang
  * 
  */
+PFont myFont;
 
 float x1, y1;
 float x2, y2;
@@ -22,7 +23,9 @@ void setup(){
   noStroke();
   smooth(20);
   background(38,115,202);
-  noLoop();
+  myFont = loadFont("Norwester-Regular-250.vlw");
+  //noLoop();
+  
 }
 
 void draw(){ 
@@ -125,12 +128,16 @@ void createLine() {
   xoff += 1;
   endShape();
   
+  textFont(myFont,90); 
+  textAlign(CENTER,CENTER-30);
+  fill(255);
+  text("THIS IS ART MODERN",width/2, height/2);
 }
 
-void mousePressed() {
-  clear();
-  background(38,115,202);
-  redraw();
-}
+//void mousePressed() {
+//  clear();
+//  background(38,115,202);
+//  redraw();
+//}
 
 
