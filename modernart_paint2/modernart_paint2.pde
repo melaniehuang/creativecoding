@@ -19,13 +19,15 @@ void setup(){
   noStroke();
   background(236,238,224);
   myFont = loadFont("Norwester-Regular-250.vlw");
-  //noLoop(); 
+  noLoop(); 
   
   circles = 4;
   yoff = 0.0; 
 }
 
 void draw(){ 
+  blendMode(BLEND);
+  
   createBase();
   createPaint();
   createPaint2();
@@ -78,7 +80,7 @@ void createPaint() {
       strokeWeight(1);
       color interA = lerpColor(from, to, n);  
       bezier(x1, y1+i, x2, y2+i, x3, y3+i, x4, y4+i);
-      stroke(interA, 100);  
+      stroke(interA, 200);  
     }
    }
 }
@@ -110,14 +112,14 @@ void createPaint2() {
       strokeWeight(1);
       color interA = lerpColor(from, to, n);  
       bezier(x1, y1+i, x2, y2+i, x3, y3+i, x4, y4+i);
-      stroke(interA, 100);  
+      stroke(interA, 200);  
     }
    }
 }
 
 void mousePressed() {
   saveFrame(); 
-//  clear();
-//  background(38,115,202);
-//  redraw();
+ clear();
+ background(38,115,202);
+ redraw();
 }
