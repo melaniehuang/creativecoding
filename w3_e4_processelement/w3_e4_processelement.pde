@@ -1,7 +1,9 @@
 void setup(){
-  size(200,200);
+  size(500,500);
   background(0);  
-  frameRate(1);
+  frameRate(2);
+  stroke(255);
+  noFill();
 }
 
 void draw() {
@@ -9,38 +11,20 @@ void draw() {
 }
 
 void drawElement(){  
-  noFill();
-  stroke(255);
-  ellipseMode(CENTER);
+  int w = 100;
   
-  int diameter = 10;
+  float x1 = random(0, width);
+  float y1 = random(0, height); 
   
-  int x = width/2;
-  int y = height/2;
+  float x2 = random(0, width);
+  float y2 = random(0, height); 
   
-  int x1 = width/2;
+  ellipse(x1,y1, w, w);
+  ellipse(x2,y2, w, w);
   
-  float xoff = random(-width/2,width/2);
+  float d = dist(x1,y1,x2,y2);
   
-  point(x,y);
-  ellipse(x,y,diameter,diameter); 
-   
-  float d = dist(x,y,x1,y);
-  
-    if (d > diameter) {
-      point(x1+xoff,y);
-      ellipse(x1+xoff,y,diameter,diameter);
-      line(x1,y,x+xoff,y); 
-    } else {
-      point(x1+xoff,y);
-      ellipse(x1+xoff,y,diameter,diameter);
-    }
-    
-    x = ++x1;
+  if (d < w) {
+   line(x1,y1,x2,y2);
+  }
 }
-
-// draw circle/s 
-// circles move in straight lines (100px away, in x or y direction)
-// if circles overlap draw a line from centre of ellipses
-// if d is equal to or greater than diameter = 100;
-// colour first line yellow, colour second line blue
