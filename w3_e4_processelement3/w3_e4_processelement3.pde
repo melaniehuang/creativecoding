@@ -32,15 +32,6 @@ void draw() {
   drawElementx(); 
 }
 
-
-//xdirection
-//x min and max
-//speed
-// y
-// x
-
-
-
 void drawElementx(){  
   noFill();
   
