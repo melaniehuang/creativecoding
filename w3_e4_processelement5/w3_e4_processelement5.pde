@@ -3,6 +3,9 @@ int[][] balls = { {600,100,1,400,600,5},
                   {400,500,1,200,800,1},
                   {300,700,1,100,900,4},
                   {200,900,1,0,1000,1} };
+                  
+int w = 100;
+
 void setup() {
   background(0);
   size(1000, 1000);  
@@ -13,7 +16,7 @@ void setup() {
 void draw() {
   background(0);
   drawElement();
-
+  drawLines();
 }
 
 void drawElement(){  
@@ -38,8 +41,10 @@ void drawElement(){
     balls[i][0] = x+1*d*speed;
     
     stroke(255);
-    ellipse(x,y,100,100);
+    ellipse(x,y,w,w);
     point(x,y);
-
   }
+}
+
+void drawLines(){  
 }
