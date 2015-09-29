@@ -1,18 +1,28 @@
 int[][] balls = { {width/2,height/2,1,1,1},
                   {width/2,height/2,1,1,2},
-                  {width/2,height/2,1,1,3} };
+                  {width/2,height/2,1,1,3},
+                  {width/2,height/2,1,1,4},
+                  {width/2,height/2,1,1,5},
+                  {width/2,height/2,1,1,6},
+                  {width/2,height/2,1,1,7} };
 
-int circleWidth = 100;
+int circleWidth = 400;
 
 void setup() {
   background(#FF7D52);
   size(1000, 800);  
   noFill();
+  stroke(#FFE0D6);
   pixelDensity(2);
 }
 
 void draw() {
-  background(0);  
+  //background(0);
+  
+  blendMode(BLEND);
+  fill(#FF7D52, 10);
+  rect(0, 0, width, height);
+  
   drawElement();
   drawLines();
 }
@@ -48,16 +58,16 @@ void drawElement(){
      balls[i][3] = -1;
     }
    
-    stroke(255);
+    //stroke(255);
     ellipse(x,y,circleWidth,circleWidth);
-    point(x,y);
+    //point(x,y);
 
   }
 }
 
 void drawLine(int x1, int y1, int x2, int y2){ 
   float d = dist(x1,y1,x2,y2);
-  if (d <= circleWidth){
+  if (d <= circleWidth){    
     stroke(255);
     line(x1,y1,x2,y2);
   }
