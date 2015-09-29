@@ -1,8 +1,8 @@
-int[][] balls = { {400,100,1,400,600,5},
-                  {300,300,1,300,700,4},
-                  {200,500,1,200,800,1},
-                  {100,700,1,100,900,4},
-                  {0,900,1,0,1000,1} };
+int[][] balls = { {600,100,1,400,600,5},
+                  {500,300,1,300,700,4},
+                  {400,500,1,200,800,1},
+                  {300,700,1,100,900,4},
+                  {200,900,1,0,1000,1} };
 void setup() {
   background(0);
   size(1000, 1000);  
@@ -13,6 +13,7 @@ void setup() {
 void draw() {
   background(0);
   drawElement();
+
 }
 
 void drawElement(){  
@@ -25,19 +26,20 @@ void drawElement(){
     int s = balls[i][3];
     int l = balls[i][4];
     int speed = balls[i][5];
-    
+        
     if ( d == -1 && x == s ){
-      d = 1;
+      balls[i][2] = 1;
     }
   
     if ( d == 1 && x == l ){
-      d = -1;
+      balls[i][2] = -1;
     }
-  
-    x = x+1*d*speed;
-
+    
+    balls[i][0] = x+1*d*speed;
+    
     stroke(255);
     ellipse(x,y,100,100);
     point(x,y);
+
   }
 }
