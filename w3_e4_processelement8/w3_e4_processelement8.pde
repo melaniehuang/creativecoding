@@ -5,7 +5,7 @@ float[][] balls = new float[10][5];
 int circleWidth = 350;
 
 void setup() {
-  background(#FF7D52);
+  background(#6858ff);
   size(1000, 800);  
   noFill();
   stroke(#FFE0D6);
@@ -24,11 +24,11 @@ void draw() {
   //background(0);
   
   blendMode(BLEND);
-  fill(#FF7D52, 10);
+  fill(#6858ff, 10);
   rect(0, 0, width, height);
   
   for (int w = 0; w < width; w+=50) {
-    for (int h = 0; h < height; h+=50) {
+    for (int h = 0; h < height; h+=50) { 
       stroke(255);
       point(w,h);
     }
@@ -52,19 +52,19 @@ void drawElement(){
     balls[i][0] = x + ( speed * xd );
     balls[i][1] = y + ( speed * yd );
     
-    if ( xd == -1 && x <= 0 + (circleWidth/2) ){
+    if ( xd == -1 && x <= 0 ){
      balls[i][2] *= -1;
     }
   
-    if ( xd == 1 && x > width - (circleWidth/2) ){
+    if ( xd == 1 && x > width ){
      balls[i][2] = -1;
     }
     
-    if ( yd == -1 && y <= 0 + (circleWidth/2) ){
+    if ( yd == -1 && y <= 0 ){
      balls[i][3] *= -1;
     }
   
-    if ( yd == 1 && y > height - (circleWidth/2)){
+    if ( yd == 1 && y > height ){
      balls[i][3] = -1;
     }
    
@@ -78,7 +78,7 @@ void drawElement(){
 void drawLine(float x1, float y1, float x2, float y2){ 
   float d = dist(x1,y1,x2,y2);
   if (d <= circleWidth){    
-    stroke(255);
+    stroke(#fde803);
     line(x1,y1,x2,y2);
   }
 }
@@ -99,5 +99,15 @@ void drawLines(){
 void keyPressed() {
   if (key == 's' || key == 'S') {
     saveFrame(); 
+  }
+}
+
+void mousePressed() {
+  for (int i = 0; i < balls.length; i++) {
+    balls[i][0] = random(width);
+    balls[i][1] = random(height);
+    balls[i][2] = 1;
+    balls[i][3] = 1;
+    balls[i][4] = random(8);
   }
 }
