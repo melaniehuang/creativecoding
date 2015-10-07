@@ -1,4 +1,4 @@
-float[][] balls = new float[10][5];
+float[][] balls = new float[12][5];
 
 //x,y,xd,yd,speed
 
@@ -16,7 +16,7 @@ void setup() {
     balls[i][1] = random(height);
     balls[i][2] = 1;
     balls[i][3] = 1;
-    balls[i][4] = random(8);
+    balls[i][4] = random(2,10);
   }
 }
 
@@ -70,7 +70,7 @@ void drawElement(){
    
     //stroke(255);
     //ellipse(x,y,circleWidth,circleWidth);
-    //point(x,y);
+    point(x,y);
 
   }
 }
