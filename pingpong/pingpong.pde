@@ -9,8 +9,12 @@ int[] gamesWon = new int[2];
 String teamA = "COMMON CODE";
 String teamB = "EVERYONE ELSE";
 
+// ** END GAME ** //
+boolean blinker;
+int timer = -3000;
 
 void setup() {  
+  
   background(#6858ff);
   size(1200, 700);  
   noFill();
@@ -159,7 +163,10 @@ void writeScores(){
     gamesWon[0]++;
     score[0] = 0;
     score[1] = 0;
-  } 
+  } else if (score[0] == 11 && gamesWon[0] == 2) {
+    gamesWon[0]++;
+    endGame();
+  }
   
   for (int i = 0; i < gamesWon[0]; i++){
     fill(255);
@@ -182,11 +189,21 @@ void keyPressed() {
   }
   if (key == 'X' || key == 'x') {
     score[1]--;
-  }
+  }  
+  //END GAME//
 }
 
 void endGame(){
+  timer = millis();
   
+  if (frameCount % 12 == 0) { 
+    blinker = !blinker; 
+  }
+  
+  if (blinker) {
+    fill(255);
+    text("this text will blink",50,300);
+  }
 }
 
 
