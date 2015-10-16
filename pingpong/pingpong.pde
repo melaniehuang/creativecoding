@@ -5,7 +5,7 @@ int[] score = new int[2];
 
 // ** NEW GAME ** //
 int bestOf = 3;
-int[] gamesWon;
+int[] gamesWon = new int[2];
 String teamA = "COMMON CODE";
 String teamB = "EVERYONE ELSE";
 
@@ -32,18 +32,16 @@ void setup() {
 }
 
 void draw() {  
-  
   drawCourt();
   writeTeams();
   writeScores();
   rectMode(CORNER);
-  
+
   strokeWeight(1);
   blendMode(BLEND);
   
   fill(#6858ff, 10);
   rect(0, 0, width, height);
-  
   
   for (int w = 0; w < width; w+=25) {
     for (int h = 0; h < height; h+=25) { 
@@ -115,6 +113,7 @@ void drawLines(){
 
 void drawCourt(){  
   rectMode(CENTER);
+  noFill();
   strokeWeight(10);
   stroke(255);
   rect(width/2,height/2,width-100,height-100);
@@ -155,6 +154,18 @@ void writeScores(){
    ellipse(x1+(gameCircle*i)+(gap*i),y,gameCircle,gameCircle);
    ellipse(x2+(gameCircle*i)+(gap*i),y,gameCircle,gameCircle);
   }
+  
+  if (score[0] == 11 && gamesWon[0] < 2) {
+    gamesWon[0]++;
+    score[0] = 0;
+    score[1] = 0;
+  } 
+  
+  for (int i = 0; i < gamesWon[0]; i++){
+    fill(255);
+    ellipse(x1+(gameCircle*i)+(gap*i),y,gameCircle-8,gameCircle-8);
+  }
+  
 }
 
 void keyPressed() { 
@@ -172,9 +183,12 @@ void keyPressed() {
   if (key == 'X' || key == 'x') {
     score[1]--;
   }
-  
-  //games
 }
+
+void endGame(){
+  
+}
+
 
 
 
