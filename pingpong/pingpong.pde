@@ -5,7 +5,8 @@ String teamB = "PHOENIX";
 
 int circleWidth = 200;
 
-void setup() {
+void setup() {  
+  
   background(#6858ff);
   size(1200, 700);  
   noFill();
@@ -22,20 +23,24 @@ void setup() {
 }
 
 void draw() {  
+  
   drawCourt();
   writeTeams();
   rectMode(CORNER);
   
   strokeWeight(1);
   blendMode(BLEND);
+  
   fill(#6858ff, 10);
   rect(0, 0, width, height);
+  
   
   for (int w = 0; w < width; w+=50) {
     for (int h = 0; h < height; h+=50) { 
       point(w,h);
     }
   }
+  
   drawElement();
   drawLines();
 }  
@@ -109,9 +114,10 @@ void drawCourt(){
 }
 
 void writeTeams(){
+  fill(255);
   textSize(32);
-  textAlign(CENTER,CENTER);
-  text(teamA, (width/2-50)/2, (height/2-50)/2); 
+  textAlign(CENTER);
+  text(teamA, (width/2+50)/2, (height/2-50)/2); 
   text(teamB, (width-50)-(width/2)/2, (height/2-50)/2); 
 }
 
