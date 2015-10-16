@@ -1,24 +1,33 @@
+// ** CUSTOMISE BACKGROUND ** x,y,xd,yd,speed
 float[][] balls = new float[2][5];
-String teamA = "DUMBLEDORE";
-String teamB = "PHOENIX";
-//x,y,xd,yd,speed
+int circleWidth = 100;
+int[] score = new int[2];
 
-int circleWidth = 200;
+// ** NEW GAME ** //
+int bestOf = 3;
+int[] gamesWon;
+String teamA = "COMMON CODE";
+String teamB = "EVERYONE ELSE";
+
 
 void setup() {  
-  
   background(#6858ff);
   size(1200, 700);  
   noFill();
   stroke(#FFE0D6);
   pixelDensity(2);
   
+  score[0] = 0;  
+  score[1] = 0;
+  gamesWon[0] = 0;
+  gamesWon[1] = 0;
+
   for (int i = 0; i < balls.length; i++) {
     balls[i][0] = random(width);
     balls[i][1] = random(height);
     balls[i][2] = 1;
     balls[i][3] = 1;
-    balls[i][4] = random(2,10);
+    balls[i][4] = random(2,5);
   } 
 }
 
@@ -26,6 +35,7 @@ void draw() {
   
   drawCourt();
   writeTeams();
+  writeScores();
   rectMode(CORNER);
   
   strokeWeight(1);
@@ -35,8 +45,8 @@ void draw() {
   rect(0, 0, width, height);
   
   
-  for (int w = 0; w < width; w+=50) {
-    for (int h = 0; h < height; h+=50) { 
+  for (int w = 0; w < width; w+=25) {
+    for (int h = 0; h < height; h+=25) { 
       point(w,h);
     }
   }
@@ -59,19 +69,19 @@ void drawElement(){
     balls[i][0] = x + ( speed * xd );
     balls[i][1] = y + ( speed * yd );
     
-    if ( xd == -1 && x <= 0 ){
+    if ( xd == -1 && x <= 0 + circleWidth/2){
      balls[i][2] *= -1;
     }
   
-    if ( xd == 1 && x > width ){
+    if ( xd == 1 && x > width - circleWidth /2 ){
      balls[i][2] = -1;
     }
     
-    if ( yd == -1 && y <= 0 ){
+    if ( yd == -1 && y <= 0 + circleWidth/2){
      balls[i][3] *= -1;
     }
   
-    if ( yd == 1 && y > height ){
+    if ( yd == 1 && y > height - circleWidth/2 ){
      balls[i][3] = -1;
     }
    
@@ -117,13 +127,54 @@ void writeTeams(){
   fill(255);
   textSize(32);
   textAlign(CENTER);
-  text(teamA, (width/2+50)/2, (height/2-50)/2); 
-  text(teamB, (width-50)-(width/2)/2, (height/2-50)/2); 
+  text(teamA, (width/2+50)/2, 50+((height-100)/4)); 
+  text(teamB, width/2 + ((width/2-50)/2), 50+((height-100)/4)); 
 }
 
+void writeScores(){
+  int gameCircle = 20;
+  int gap = 10;
+  
+  fill(255);
+  textSize(140);
+  textAlign(CENTER,CENTER);
+  
+  //points
+  text(score[0], (width/2+50)/2, height/2 +((height-100)/4)-20); 
+  text(score[1], width/2 + ((width/2-50)/2), height/2 +((height-100)/4)-20); 
 
+  //games
+  int x1 = width/2 - (gap*bestOf + gameCircle*bestOf);
+  int x2 = width - (gap*bestOf + gameCircle*bestOf + 50);
 
+  int y = height - 50 - (gameCircle + gap);
+  
+  for (int i = 0 ; i < bestOf; i++){
+   noFill();
+   strokeWeight(1);
+   ellipse(x1+(gameCircle*i)+(gap*i),y,gameCircle,gameCircle);
+   ellipse(x2+(gameCircle*i)+(gap*i),y,gameCircle,gameCircle);
+  }
+}
 
+void keyPressed() { 
+  //points
+  if (key == 'A' || key == 'a') {
+    score[0]++;
+  }
+  if (key == 'Z' || key == 'z') {
+    score[0]--;
+  }
+  
+  if (key == 'S' || key == 's') {
+    score[1]++;
+  }
+  if (key == 'X' || key == 'x') {
+    score[1]--;
+  }
+  
+  //games
+}
 
 
 
