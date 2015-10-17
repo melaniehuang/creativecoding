@@ -1,12 +1,13 @@
 // ** NEW GAME ** //
 import controlP5.*;
 ControlP5 cp5;
-String textValue = "";
+public int myColor = color(104,88,255);
+String teamOne = "";
 
 int bestOf = 3;
 int[] gamesWon = new int[2];
-String teamA = "COMMON CODE";
-String teamB = "EVERYONE ELSE";
+String teamA;
+String teamB;
 
 // ** END GAME ** //
 boolean blinker;
@@ -15,9 +16,12 @@ int timer = -3000;
 void setup() {  
   cp5 = new ControlP5(this);
             
-  cp5.addTextfield("Team 1")
-     .setPosition(40,200)
-     .setSize(400,60)
+  cp5.addTextfield("teamOne")
+     .setPosition((width/2+50)/2-100, 50+((height-100)/4)+200)
+     .setSize(200,60)
+     .setFocus(true)
+     .setColor(color(255))
+     .setColorBackground(color(104,88,255))
      .setAutoClear(false)
      ;
      
@@ -67,11 +71,12 @@ void draw() {
 void newGame(){
   fill(255);
   textSize(10);
-  text("Team 1", 360,180);
+  text(teamOne, 360,180);
 }
 
 public void clear() {
-  cp5.get(Textfield.class,"textValue").clear();
+  fill(255);
+  cp5.get(Textfield.class,"teamOne").clear();
 }
 
 void controlEvent(ControlEvent theEvent) {
@@ -80,6 +85,7 @@ void controlEvent(ControlEvent theEvent) {
             +theEvent.getName()+"': "
             +theEvent.getStringValue()
             );
+    cp5.get(Textfield.class,"teamOne").hide();
   }
 }
 
