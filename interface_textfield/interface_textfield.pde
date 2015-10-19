@@ -36,8 +36,9 @@ void draw() {
     background(128);
   } else {
     background(0);
-    fill(255);
+    fill(250,73,45);
     text(teamOne,20,height-40);
+    fill(64,97,255);
     text(teamTwo,300,height-40);
   }
 }
@@ -72,9 +73,9 @@ void createMessageBox() {
   Textfield teamTwo = cp5.addTextfield("Team Two",20,66,260,20);
   teamTwo.getCaptionLabel().setVisible(false);
   teamTwo.moveTo(messageBox);
-  teamTwo.setColorForeground(color(20));
-  teamTwo.setColorBackground(color(20));
-  teamTwo.setColorActive(color(100));
+  teamTwo.setColorForeground(color(38,53,126));
+  teamTwo.setColorBackground(color(64,97,255));
+  teamTwo.setColorActive(color(255));
   
   // OK button
   Button b1 = cp5.addButton("buttonOK");
@@ -100,6 +101,6 @@ void buttonOK(int theValue) {
   
   messageBoxResult = theValue;
   messageBox.hide();
-  //cp5.get(Textfield.class,"Team One").clear();
-  //cp5.get(Textfield.class,"Team Two").clear();
+  cp5.get(Textfield.class,"Team One").clear();
+  cp5.get(Textfield.class,"Team Two").clear();
 }
