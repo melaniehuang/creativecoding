@@ -13,8 +13,8 @@ void writeTeams(){
   fill(255);
   textSize(32);
   textAlign(CENTER);
-  //text(cp5.get(Textfield.class,"teamOne").getText(), (width/2+50)/2, 50+((height-100)/4)); 
-  //text(cp5.get(Textfield.class,"teamTwo").getText(), width/2 + ((width/2-50)/2), 50+((height-100)/4)); 
+  text(cp5.get(Textfield.class,"teamOne").getText(), (width/2+50)/2, 50+((height-100)/4)); 
+  text(cp5.get(Textfield.class,"teamTwo").getText(), width/2 + ((width/2-50)/2), 50+((height-100)/4)); 
 }
 
 void writeScores(){
@@ -50,7 +50,7 @@ void writeScores(){
     score[1] = 0;
   } else if (score[0] == 11 && gamesWon[0] == 2) {
     gamesWon[0]++;
-    endGame();
+    //endGame();
   }
   
   for (int i = 0; i < gamesWon[0]; i++){
@@ -66,7 +66,7 @@ void writeScores(){
     score[1] = 0;
   } else if (score[1] == 11 && gamesWon[1] == 2) {
     gamesWon[1]++;
-    endGame();
+    //end game
   }
   
   for (int i = 0; i < gamesWon[0]; i++){
@@ -92,17 +92,4 @@ void keyPressed() {
     score[1]--;
   }  
   //END GAME//
-}
-
-void endGame(){
-  timer = millis();
-  
-  if (frameCount % 12 == 0) { 
-    blinker = !blinker; 
-  }
-  
-  if (blinker) {
-    fill(255);
-    text("this text will blink",50,300);
-  }
 }
