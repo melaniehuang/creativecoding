@@ -8,8 +8,8 @@ String teamA;
 String teamB;
 
 void setup() {  
-  cp5 = new ControlP5(this);
-  newGame();
+  //cp5 = new ControlP5(this);
+  //newGame();
   
   background(#6858ff);
   size(1200, 700);  
@@ -33,7 +33,7 @@ void setup() {
 
 void draw() {  
   if (gamesWon[0] == 0 && gamesWon[1] == 0){
-    newGame();
+    //newGame();
   }
     
   drawCourt();

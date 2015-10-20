@@ -13,8 +13,8 @@ void writeTeams(){
   fill(255);
   textSize(32);
   textAlign(CENTER);
-  text(cp5.get(Textfield.class,"teamOne").getText(), (width/2+50)/2, 50+((height-100)/4)); 
-  text(cp5.get(Textfield.class,"teamTwo").getText(), width/2 + ((width/2-50)/2), 50+((height-100)/4)); 
+  text("COMMON CODE", (width/2+50)/2, 50+((height-100)/4)); 
+  text("EVERYONE ELSE", width/2 + ((width/2-50)/2), 50+((height-100)/4)); 
 }
 
 void writeScores(){
