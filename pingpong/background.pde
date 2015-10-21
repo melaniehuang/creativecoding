@@ -34,6 +34,7 @@ void drawElement(){
     }
    
     //stroke(255);
+    stroke(#f4db32);
     ellipse(x,y,circleWidth,circleWidth);
     point(x,y);
 
@@ -59,4 +60,22 @@ void drawLines(){
                  ballB[0], ballB[1]);
       }      
     }
+}
+
+void drawCourt(){  
+  rectMode(CENTER);
+  noFill();
+  strokeWeight(10);
+  stroke(255);
+  rect(width/2,height/2,width-100,height-100);
+  
+  line(width/2, 0, width/2, height);
+  line(50, height/2, width-50, height/2);
+  
+  for (int w = 0; w < width; w+=25) {
+    for (int h = 0; h < height; h+=25) { 
+      strokeWeight(1);
+      point(w,h);
+    }
+  } 
 }

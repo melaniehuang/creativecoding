@@ -1,20 +1,12 @@
-void drawCourt(){  
-  rectMode(CENTER);
-  noFill();
-  strokeWeight(10);
-  stroke(255);
-  rect(width/2,height/2,width-100,height-100);
-  
-  line(width/2, 0, width/2, height);
-  line(50, height/2, width-50, height/2);
-}
+int bestOf = 3;
+int[] gamesWon = new int[2];
 
 void writeTeams(){
   fill(255);
   textSize(32);
   textAlign(CENTER);
-  text("COMMON CODE", (width/2+50)/2, 50+((height-100)/4)); 
-  text("EVERYONE ELSE", width/2 + ((width/2-50)/2), 50+((height-100)/4)); 
+  text(teamOne, (width/2+50)/2, 50+((height-100)/4)); 
+  text(teamTwo, width/2 + ((width/2-50)/2), 50+((height-100)/4)); 
 }
 
 void writeScores(){

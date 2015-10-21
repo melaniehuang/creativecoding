@@ -1,15 +1,4 @@
-//public int myColor = color(104,88,255);
-String teamOne = "";
-
-int bestOf = 3;
-int[] gamesWon = new int[2];
-String teamA;
-String teamB;
-
 void setup() {  
-  //cp5 = new ControlP5(this);
-  //newGame();
-  
   background(#6858ff);
   size(1200, 700);  
   noFill();
@@ -28,13 +17,17 @@ void setup() {
     balls[i][3] = 1;
     balls[i][4] = random(2,5);
   } 
+  
+  cp5 = new ControlP5(this);
+  
+  createMessageBox();
+  createButtonOK();
+
+  Date d = new Date();
+  output = createWriter("data/" + d.getTime() + ".txt");  
 }
 
-void draw() {  
-  if (gamesWon[0] == 0 && gamesWon[1] == 0){
-    //newGame();
-  }
-    
+void draw() {   
   drawCourt();
   
   writeTeams();
@@ -43,33 +36,19 @@ void draw() {
 
   strokeWeight(1);
   blendMode(BLEND);
-  
   fill(#6858ff, 10);
   rect(0, 0, width, height);
   
-  for (int w = 0; w < width; w+=25) {
-    for (int h = 0; h < height; h+=25) { 
-      point(w,h);
-    }
-  }
+  //if(messageBox.isVisible()) {
+  //  //background(128);
+  //} else {
+  //  background(0);
+  //  fill(250,73,45);
+  //  text(teamOne,20,height-40);
+  //  fill(64,97,255);
+  //  text(teamTwo,300,height-40);
+  //}
   
   drawElement();
   drawLines();
 }
-
-
-//void keyPressed() {
-//  if (key == 's' || key == 'S') {
-//    saveFrame(); 
-//  }
-//}
-
-//void mousePressed() {
-//  for (int i = 0; i < balls.length; i++) {
-//    balls[i][0] = random(width);
-//    balls[i][1] = random(height);
-//    balls[i][2] = 1;
-//    balls[i][3] = 1;
-//    balls[i][4] = random(8);
-//  }
-//}
