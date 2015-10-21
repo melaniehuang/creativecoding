@@ -10,11 +10,8 @@ int messageBoxResult = -1;
 String teamOne = "";
 String teamTwo = "";
 
-String doesThisWork = "";
-
 int messageBoxWidth = 500;
 int messageBoxHeight = 380;
-
 
 void toggleBox(int theValue) {
   if(messageBox.isVisible()) {
@@ -28,63 +25,61 @@ void toggleBox(int theValue) {
   }
 }
 
-void createMessageBox() {
-  // create a group to store the messageBox elements
+void createMessageBox() {   
+  ControlFont heading = new ControlFont(font,28);
+  ControlFont fieldInput = new ControlFont(font,22);
+
   messageBox = cp5.addGroup("messageBox")
-                  .setPosition(width/2-250, height/2-200)
-                  .setSize(500,380)                  
+                  .setPosition(width/2-250, height/2-180)
+                  .setSize(500,310)                  
                   .setBackgroundColor(color(255))
-                  //.bringToFront() 
+                  .bringToFront() 
                   .hideBar();
   
-  // add a TextLabel to the messageBox.
-
-  Textlabel l = cp5.addTextlabel("messageBoxLabel","Enter new team names",150,50)
-                   .setColorValue(#505050)
-                   //.setFont(cfont)
+  Textlabel l = cp5.addTextlabel("messageBoxLabel","Enter new team names",110,40)
+                   .setColorValue(#707070)
+                   .setFont(heading)
                    .moveTo(messageBox);
   
-  Textfield f1 = cp5.addTextfield("teamOne");
-                         //.setPosition(50,120)
-                         //.setSize(400,60)
-                         //.setFocus(true)
+  Textfield f1 = cp5.addTextfield("teamOne")
+                         .setPosition(50,110)
+                         .setSize(400,50)
+                         .setFocus(true)
  
-                         //.setFont(cfont)
+                         .setFont(fieldInput)
+                         .setColor(255)
+                         .setColorForeground(color(255))
+                         .setColorBackground(color(#F03A0C))
+                         .setColorActive(color(#FF5429))
                          
-                         //.setColorForeground(color(255))
-                         //.setColorBackground(color(#F03A0C))
-                         //.setColorActive(color(#FF5429))
-                         
-                         //.setAutoClear(false);
-                                               
-  
+                         .setAutoClear(false);
+                                             
   f1.moveTo(messageBox);
   
   Textfield f2 = cp5.addTextfield("teamTwo")
-                         
-                         .setPosition(50,190)
-                         .setSize(400,60)
-                         .setColorForeground(color(255))
-                         .setColorBackground(color(#296EFF))
-                         .setColorActive(color(#00B0FF))
+                    .setFont(fieldInput)
+                    .setPosition(50,170)
+                    .setSize(400,50)
+                    .setColorForeground(color(255))
+                    .setColorBackground(color(#296EFF))
+                    .setColorActive(color(#00B0FF))
                   
-                         .setAutoClear(false);               
+                    .setAutoClear(false);               
+   
    f2.moveTo(messageBox);                      
                                                     
   // OK button
   Button b1 = cp5.addButton("buttonOK")
-                 .setSize(120,60)
-                 .setPosition(190,280)
-                 
-                 .setColorBackground(color(200))
-                 .setColorActive(color(150))
+                 .setSize(80,40)
+                 .setPosition(210,240)
+                 .setColorBackground(color(#707070))
                  .setBroadcast(false)                
                  .setValue(1)
                  .setBroadcast(true);                
   
-  b1.setCaptionLabel("OK")
+  b1.setCaptionLabel("START")
     .getCaptionLabel()
-    //.setFont(cfont)
+    .setFont(fieldInput)
     .setSize(20);
     
   b1.moveTo(messageBox);
@@ -93,10 +88,13 @@ void createMessageBox() {
 
 void createButtonOK(){
   Button b = cp5.addButton("toggleBox")
-                .setLabel("NEW GAME")
-                .setSize(100,20)
-                .setPosition(30,30)
-                .setDefaultValue(1);
+                .setLabel("+")
+                .setSize(20,20)
+                .setPosition(10,10)
+                .setDefaultValue(1)
+                .setColorBackground(color(#fde803));
+  b.getCaptionLabel()
+   .setColor(color(0));
 }
 
 void buttonOK(int theValue) {
@@ -117,10 +115,10 @@ void buttonOK(int theValue) {
   output.close();
 }
 
-//void writeTeams(){
-//  fill(255);
-//  textSize(32);
-//  textAlign(CENTER);
-//  text(teamOne, (width/2+50)/2, 50+((height-100)/4)); 
-//  text(teamTwo, width/2 + ((width/2-50)/2), 50+((height-100)/4)); 
-//}
+void writeTeams(){
+ fill(255);
+ textSize(32);
+ textAlign(CENTER);
+ text(teamOne, (width/2+50)/2, 50+((height-100)/4)); 
+ text(teamTwo, width/2 + ((width/2-50)/2), 50+((height-100)/4)); 
+}
