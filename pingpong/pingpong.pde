@@ -1,15 +1,26 @@
-PFont font;
-
 void setup() {  
-  background(#6858ff);
+  
   size(1200, 700);  
-  noFill();
+  //pixelDensity(2);
+  
+  cp5 = new ControlP5(this);
+  background(#6858ff);
   stroke(#FFE0D6);
-  pixelDensity(2);
   
-  font = createFont("TitilliumWeb300.ttf",30);
-  //noSmooth();
+ 
+  createMessageBox();
+  createButtonOK();
   
+  Date d = new Date();
+  output = createWriter("data/" + d.getTime() + ".txt");  
+    
+    cp5.addTextfield("doesThisWork")
+     .setPosition(20,170)
+     .setSize(200,40)
+     .setFont(createFont("arial",20))
+     .setAutoClear(false)
+     ;
+        
   score[0] = 0;  
   score[1] = 0;
   gamesWon[0] = 0;
@@ -21,20 +32,17 @@ void setup() {
     balls[i][2] = 1;
     balls[i][3] = 1;
     balls[i][4] = random(2,5);
-  } 
+  }
   
-  cp5 = new ControlP5(this);
-  
-  createMessageBox();
-  createButtonNewGame();
-
-  Date d = new Date();
-  output = createWriter("data/" + d.getTime() + ".txt");  
+  fill(255);
+  //textFont(font);
 }
 
 void draw() {   
-  drawCourt();
- 
+    text(doesThisWork, 360,180);
+
+  drawCourt(); 
+  
   rectMode(CORNER);
   strokeWeight(1);
   blendMode(BLEND);
@@ -44,14 +52,6 @@ void draw() {
   drawElement();
   drawLines();
   
-  writeTeams();
+  //writeTeams();
   writeScores();
-  
 }
-
-
-
-//if(messageBox.isVisible()) {
-//    background(255);
-//  } else {
-//  }

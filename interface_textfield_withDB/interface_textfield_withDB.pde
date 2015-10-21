@@ -33,7 +33,6 @@ void setup() {
 
 void draw() {
    
-  
   if(messageBox.isVisible()) {
     background(128);
   } else {
@@ -71,18 +70,18 @@ void createMessageBox() {
   l.moveTo(messageBox);
   
   Textfield teamOne = cp5.addTextfield("Team One",20,36,260,20);
-  teamOne.getCaptionLabel().setVisible(false);
-  teamOne.moveTo(messageBox);
-  teamOne.setColorForeground(color(121,31,17));
-  teamOne.setColorBackground(color(250,73,45));
-  teamOne.setColorActive(color(255));
+  //teamOne.getCaptionLabel().setVisible(false);
+  //teamOne.moveTo(messageBox);
+  //teamOne.setColorForeground(color(121,31,17));
+  //teamOne.setColorBackground(color(250,73,45));
+  //teamOne.setColorActive(color(255));
   
   Textfield teamTwo = cp5.addTextfield("Team Two",20,66,260,20);
-  teamTwo.getCaptionLabel().setVisible(false);
-  teamTwo.moveTo(messageBox);
-  teamTwo.setColorForeground(color(38,53,126));
-  teamTwo.setColorBackground(color(64,97,255));
-  teamTwo.setColorActive(color(255));
+  //teamTwo.getCaptionLabel().setVisible(false);
+  //teamTwo.moveTo(messageBox);
+  //teamTwo.setColorForeground(color(38,53,126));
+  //teamTwo.setColorBackground(color(64,97,255));
+  //teamTwo.setColorActive(color(255));
   
   // OK button
   Button b1 = cp5.addButton("buttonOK");
