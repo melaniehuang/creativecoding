@@ -1,5 +1,4 @@
-
-public int myColor = color(104,88,255);
+//public int myColor = color(104,88,255);
 String teamOne = "";
 
 int bestOf = 3;

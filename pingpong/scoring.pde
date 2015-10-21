@@ -69,9 +69,9 @@ void writeScores(){
     //end game
   }
   
-  for (int i = 0; i < gamesWon[0]; i++){
+  for (int i = 0; i < gamesWon[1]; i++){
     fill(255);
-    ellipse(x1+(gameCircle*i)+(gap*i),y,gameCircle-8,gameCircle-8);
+    ellipse(x2+(gameCircle*i)+(gap*i),y,gameCircle-8,gameCircle-8);
   }
   
 }
@@ -91,5 +91,4 @@ void keyPressed() {
   if (key == 'X' || key == 'x') {
     score[1]--;
   }  
-  //END GAME//
 }
