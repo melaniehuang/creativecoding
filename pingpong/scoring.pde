@@ -1,14 +1,6 @@
 int bestOf = 3;
 int[] gamesWon = new int[2];
 
-void writeTeams(){
-  fill(255);
-  textSize(32);
-  textAlign(CENTER);
-  text(teamOne, (width/2+50)/2, 50+((height-100)/4)); 
-  text(teamTwo, width/2 + ((width/2-50)/2), 50+((height-100)/4)); 
-}
-
 void writeScores(){
   int gameCircle = 20;
   int gap = 10;

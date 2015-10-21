@@ -1,9 +1,14 @@
+PFont font;
+
 void setup() {  
   background(#6858ff);
   size(1200, 700);  
   noFill();
   stroke(#FFE0D6);
   pixelDensity(2);
+  
+  font = createFont("TitilliumWeb300.ttf",30);
+  //noSmooth();
   
   score[0] = 0;  
   score[1] = 0;
@@ -21,7 +26,7 @@ void setup() {
   cp5 = new ControlP5(this);
   
   createMessageBox();
-  createButtonOK();
+  createButtonNewGame();
 
   Date d = new Date();
   output = createWriter("data/" + d.getTime() + ".txt");  
@@ -29,26 +34,24 @@ void setup() {
 
 void draw() {   
   drawCourt();
-  
-  writeTeams();
-  writeScores();
+ 
   rectMode(CORNER);
-
   strokeWeight(1);
   blendMode(BLEND);
   fill(#6858ff, 10);
   rect(0, 0, width, height);
-  
-  //if(messageBox.isVisible()) {
-  //  //background(128);
-  //} else {
-  //  background(0);
-  //  fill(250,73,45);
-  //  text(teamOne,20,height-40);
-  //  fill(64,97,255);
-  //  text(teamTwo,300,height-40);
-  //}
-  
+ 
   drawElement();
   drawLines();
+  
+  writeTeams();
+  writeScores();
+  
 }
+
+
+
+//if(messageBox.isVisible()) {
+//    background(255);
+//  } else {
+//  }

@@ -32,12 +32,10 @@ void drawElement(){
     if ( yd == 1 && y > height - circleWidth/2 ){
      balls[i][3] = -1;
     }
-   
-    //stroke(255);
+    
     stroke(#f4db32);
     ellipse(x,y,circleWidth,circleWidth);
     point(x,y);
-
   }
 }
 
