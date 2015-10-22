@@ -17,11 +17,8 @@ void toggleBox(int theValue) {
   if(messageBox.isVisible()) {
     messageBox.hide();
   } else {
-    Date d = new Date();
-    output = createWriter("data/" + d.getTime() + ".txt");   
-    cp5.get(Textfield.class,"teamOne").clear();
-    cp5.get(Textfield.class,"teamTwo").clear();
-    messageBox.show();
+    endGame();
+    messageBox.show(); 
   }
 }
 
@@ -110,9 +107,6 @@ void buttonOK(int theValue) {
   
   messageBoxResult = theValue;
   messageBox.hide();
-  
-  output.flush();  
-  output.close();
 }
 
 void writeTeams(){
@@ -121,4 +115,22 @@ void writeTeams(){
  textAlign(CENTER);
  text(teamOne, (width/2+50)/2, 50+((height-100)/4)); 
  text(teamTwo, width/2 + ((width/2-50)/2), 50+((height-100)/4)); 
+}
+
+void endGame(){
+  output.flush();  
+  output.close();
+  
+  gamesWon[0] = 0;
+  gamesWon[1] = 0;
+  
+  score[0] = 0;
+  score[1] = 0;
+  
+  cp5.get(Textfield.class,"teamOne").clear();
+  cp5.get(Textfield.class,"teamTwo").clear();
+  messageBox.show();
+  
+  Date d = new Date();
+  output = createWriter("data/" + d.getTime() + ".txt");   
 }

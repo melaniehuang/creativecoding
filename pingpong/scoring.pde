@@ -30,11 +30,14 @@ void writeScores(){
   
   if (score[0] == 11 && gamesWon[0] < 2) {
     gamesWon[0]++;
+    output.println(score[0] + "," + score[1]);
     score[0] = 0;
     score[1] = 0;
   } else if (score[0] == 11 && gamesWon[0] == 2) {
     gamesWon[0]++;
-    //endGame();
+    output.println(score[0] + "," + score[1]);
+    output.println(gamesWon[0] + "," + gamesWon[1]);
+    endGame();
   }
   
   for (int i = 0; i < gamesWon[0]; i++){
@@ -46,11 +49,14 @@ void writeScores(){
   
   if (score[1] == 11 && gamesWon[1] < 2) {
     gamesWon[1]++;
+    output.println(score[0] + "," + score[1]);
     score[0] = 0;
     score[1] = 0;
   } else if (score[1] == 11 && gamesWon[1] == 2) {
     gamesWon[1]++;
-    //end game
+    output.println(score[0] + "," + score[1]);
+    output.println(gamesWon[0] + "," + gamesWon[1]);
+    endGame();
   }
   
   for (int i = 0; i < gamesWon[1]; i++){
@@ -62,17 +68,22 @@ void writeScores(){
 
 void keyPressed() { 
   //points
-  if (key == 'A' || key == 'a') {
-    score[0]++;
+  if(messageBox.isVisible()){
+    score[0] = 0;
+    score[1] = 0;
+  } else {
+    if (key == 'A' || key == 'a') {
+      score[0]++;
+    }
+    if (key == 'Z' || key == 'z') {
+      score[0]--;
+    }
+    
+    if (key == 'S' || key == 's') {
+      score[1]++;
+    }
+    if (key == 'X' || key == 'x') {
+      score[1]--;
+    } 
   }
-  if (key == 'Z' || key == 'z') {
-    score[0]--;
-  }
-  
-  if (key == 'S' || key == 's') {
-    score[1]++;
-  }
-  if (key == 'X' || key == 'x') {
-    score[1]--;
-  }  
 }
