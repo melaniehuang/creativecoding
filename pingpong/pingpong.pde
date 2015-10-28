@@ -5,7 +5,7 @@ void setup() {
   String portName = Serial.list()[0];
   myPort = new Serial(this, portName, 9600);
   
-  size(1200, 700);  
+  size(displayWidth, displayHeight);  
   
   cp5 = new ControlP5(this);
   background(#00D2FF);
@@ -26,7 +26,7 @@ void setup() {
     balls[i][1] = random(height);
     balls[i][2] = 1;
     balls[i][3] = 1;
-    balls[i][4] = random(2,5);
+    balls[i][4] = random(20,30);
   }
   
   textFont(font);
@@ -46,5 +46,4 @@ void draw() {
   
   writeTeams();
   writeScores();
-  buttonPressed();
 }

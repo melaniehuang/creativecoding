@@ -23,8 +23,9 @@ void toggleBox(int theValue) {
 }
 
 void createMessageBox() {   
-  ControlFont heading = new ControlFont(font,28);
+  //ControlFont heading = new ControlFont(font,38);
   ControlFont fieldInput = new ControlFont(font,22);
+  ControlFont cta = new ControlFont(font,28);
 
   messageBox = cp5.addGroup("messageBox")
                   .setPosition(width/2-250, height/2-180)
@@ -35,7 +36,7 @@ void createMessageBox() {
   
   Textlabel l = cp5.addTextlabel("messageBoxLabel","Enter new team names",60,40)
                    .setColorValue(255)
-                   .setFont(heading)
+                   .setFont(cta)
                    .moveTo(messageBox);
   
   Textfield f1 = cp5.addTextfield("teamOne")
@@ -116,7 +117,7 @@ void buttonOK(int theValue) {
 
 void writeTeams(){
  fill(0);
- textSize(32);
+ textSize(38);
  textAlign(CENTER);
  text(teamOne, (width/2+50)/2, 50+((height-100)/4)); 
  text(teamTwo, width/2 + ((width/2-50)/2), 50+((height-100)/4)); 

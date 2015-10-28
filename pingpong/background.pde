@@ -1,6 +1,6 @@
 // ** CUSTOMISE BACKGROUND ** x,y,xd,yd,speed
 float[][] balls = new float[2][5];
-int circleWidth = 100;
+int circleWidth = 200;
 int[] score = new int[2];
 
 void drawElement(){  

@@ -3,9 +3,9 @@ Serial myPort;
 
 int bestOf = 3;
 int[] gamesWon = new int[2];
-int val = 0;
 
 void writeScores(){
+  
   int gameCircle = 20;
   int gap = 10;
   
@@ -68,6 +68,8 @@ void writeScores(){
     ellipse(x2+(gameCircle*i)+(gap*i),y,gameCircle-8,gameCircle-8);
   }
   
+  buttonPressed();
+  
 }
 
 void keyPressed() { 
@@ -93,21 +95,22 @@ void keyPressed() {
 }
 
 void buttonPressed(){
+  int val = 0;
+  
   if(messageBox.isVisible()){
     score[0] = 0;
     score[1] = 0;
   } else if (myPort.available() > 0) {
     val = myPort.read();
-    delay(10);
+  }
+    
+  if (val == 1) {
+   score[0]++;
+  } else if (val == 2) {
+   score[1]++;
+  } else {
+   val = 0;
   }
   
-  if (val == 1) {
-    score[0]++;
-  } else if (val == 2) {
-    score[1]++;
-  } else {
-    val = 0;
-  }
   println(val);
- 
 }
