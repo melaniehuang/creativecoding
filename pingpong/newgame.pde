@@ -26,7 +26,6 @@ void toggleBox(int theValue) {
 }
 
 void createMessageBox() {   
-  //ControlFont heading = new ControlFont(font,38);
   ControlFont fieldInput = new ControlFont(font,22);
   ControlFont cta = new ControlFont(font,22);
 
