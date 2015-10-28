@@ -63,7 +63,7 @@ void drawLines(){
 void drawCourt(){  
   rectMode(CENTER);
   noFill();
-  strokeWeight(7);
+  strokeWeight(10);
   stroke(0);
   rect(width/2,height/2,width-100,height-100);
   

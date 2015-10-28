@@ -1,7 +1,10 @@
 import processing.serial.*;
 Serial myPort;
 
-int bestOf = 3;
+//set up a game
+int pointsWon = 7;
+int bestOf = 0;
+
 int[] gamesWon = new int[2];
 
 void writeScores(){
@@ -31,13 +34,13 @@ void writeScores(){
   }
   
   // TEAM A
-  
-  if (score[0] == 11 && gamesWon[0] < 2) {
+
+  if (score[0] == pointsWon && gamesWon[0] < bestOf ) {
     gamesWon[0]++;
     output.println(score[0] + "," + score[1]);
     score[0] = 0;
     score[1] = 0;
-  } else if (score[0] == 11 && gamesWon[0] == 2) {
+  } else if (score[0] == pointsWon && gamesWon[0] == bestOf) {
     gamesWon[0]++;
     output.println(score[0] + "," + score[1]);
     output.println(gamesWon[0] + "," + gamesWon[1]);
@@ -51,12 +54,12 @@ void writeScores(){
   
   // TEAM B
   
-  if (score[1] == 11 && gamesWon[1] < 2) {
+  if (score[1] == pointsWon && gamesWon[1] < bestOf) {
     gamesWon[1]++;
     output.println(score[0] + "," + score[1]);
     score[0] = 0;
     score[1] = 0;
-  } else if (score[1] == 11 && gamesWon[1] == 2) {
+  } else if (score[1] == pointsWon && gamesWon[1] == bestOf) {
     gamesWon[1]++;
     output.println(score[0] + "," + score[1]);
     output.println(gamesWon[0] + "," + gamesWon[1]);
