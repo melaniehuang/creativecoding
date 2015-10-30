@@ -65,7 +65,6 @@ void createMessageBox() {
   Textfield f3 = cp5.addTextfield("teamOneCompany")
                          .setPosition(60,170)
                          .setSize(300,50)
-                         .setFocus(true)
                          .setColorLabel(0) 
  
                          .setFont(fieldInput)

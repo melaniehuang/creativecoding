@@ -2,18 +2,18 @@ import processing.serial.*;
 Serial myPort;
 
 //set up a game
-int pointsWon = 7;
-int bestOf = 0;
+int pointsWon = 5;
+// First to 4 (Plus one!)
+int bestOf = 2;
 
 int[] gamesWon = new int[2];
 
-
 boolean winByTwo(int playerOne, int playerTwo) {
-  delta = abs(playerOne - playerTwo);
+  int delta = abs(playerOne - playerTwo);
   return (delta > 1);
 }
 
-int findWinner(int players[2]) {
+int findWinner(int[] players) {
   if (players[0] > players[1]) {
     return 0;
   }
@@ -34,12 +34,12 @@ void writeScores(){
   text(score[1], width/2 + ((width/2-50)/2), height/2 +((height-100)/4)-20); 
 
   //games
-  int x1 = width/2 - (gap*bestOf + gameCircle*bestOf);
-  int x2 = width - (gap*bestOf + gameCircle*bestOf + 50);
+  int x1 = width/2 - (gap*(bestOf+1) + gameCircle*(bestOf+1));
+  int x2 = width - (gap*(bestOf+1) + gameCircle*(bestOf+1) + 50);
 
   int y = height - 50 - (gameCircle + gap);
   
-  for (int i = 0 ; i < bestOf; i++){
+  for (int i = 0 ; i < bestOf+1; i++){
    noFill();
    strokeWeight(1);
    ellipse(x1+(gameCircle*i)+(gap*i),y,gameCircle,gameCircle);
@@ -49,6 +49,7 @@ void writeScores(){
   if (score[0] >= pointsWon || score[1] >= pointsWon) {
     if (winByTwo(score[0], score[1])) {
       int winner = findWinner(score);
+      output.println(score[0] + ", "+ score[1]);  
       if (gamesWon[winner] < bestOf) {
         gamesWon[winner]++;
         score = new int[2];
@@ -59,15 +60,17 @@ void writeScores(){
     }
   }
 
-  for (int i = 0; i < gamesWon.length; i++) {
-    for (int j = 0; j < gamesWon[i]; j++) {
+  for (int j = 0; j < gamesWon[0]; j++) {
       fill(255);
       ellipse(x1 + (gameCircle * j) + (gap * j), y, gameCircle - 8, gameCircle - 8);
-    }
+  }
+  
+  for (int j = 0; j < gamesWon[1]; j++) {
+      fill(255);
+      ellipse(x2 + (gameCircle * j) + (gap * j), y, gameCircle - 8, gameCircle - 8);
   }
   
   buttonPressed();
-  
 }
 
 void keyPressed() { 

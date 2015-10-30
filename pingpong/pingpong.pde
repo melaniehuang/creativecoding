@@ -2,11 +2,12 @@ PFont font;
 
 void setup() {  
   font = createFont("slkscr.ttf", 60,true);
-  String portName = Serial.list()[0];
+  String portName = Serial.list()[1];
   myPort = new Serial(this, portName, 9600);
   
   //size(displayWidth, displayHeight);
   fullScreen();
+  frameRate(60);
   
   cp5 = new ControlP5(this);
   background(#00D2FF);
