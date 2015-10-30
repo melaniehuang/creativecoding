@@ -7,6 +7,19 @@ int bestOf = 0;
 
 int[] gamesWon = new int[2];
 
+
+boolean winByTwo(int playerOne, int playerTwo) {
+  delta = abs(playerOne - playerTwo);
+  return (delta > 1);
+}
+
+int findWinner(int players[2]) {
+  if (players[0] > players[1]) {
+    return 0;
+  }
+  return 1;
+}
+
 void writeScores(){
   
   int gameCircle = 20;
@@ -33,42 +46,24 @@ void writeScores(){
    ellipse(x2+(gameCircle*i)+(gap*i),y,gameCircle,gameCircle);
   }
   
-  // TEAM A
+  if (score[0] >= pointsWon || score[1] >= pointsWon) {
+    if (winByTwo(score[0], score[1])) {
+      int winner = findWinner(score);
+      if (gamesWon[winner] < bestOf) {
+        gamesWon[winner]++;
+        score = new int[2];
+      } else if (gamesWon[winner] == bestOf) {
+        gamesWon[winner]++;
+        endGame();
+      }
+    }
+  }
 
-  if (score[0] == pointsWon && gamesWon[0] < bestOf ) {
-    gamesWon[0]++;
-    output.println(score[0] + "," + score[1]);
-    score[0] = 0;
-    score[1] = 0;
-  } else if (score[0] == pointsWon && gamesWon[0] == bestOf) {
-    gamesWon[0]++;
-    output.println(score[0] + "," + score[1]);
-    output.println(gamesWon[0] + "," + gamesWon[1]);
-    endGame();
-  }
-  
-  for (int i = 0; i < gamesWon[0]; i++){
-    fill(255);
-    ellipse(x1+(gameCircle*i)+(gap*i),y,gameCircle-8,gameCircle-8);
-  }
-  
-  // TEAM B
-  
-  if (score[1] == pointsWon && gamesWon[1] < bestOf) {
-    gamesWon[1]++;
-    output.println(score[0] + "," + score[1]);
-    score[0] = 0;
-    score[1] = 0;
-  } else if (score[1] == pointsWon && gamesWon[1] == bestOf) {
-    gamesWon[1]++;
-    output.println(score[0] + "," + score[1]);
-    output.println(gamesWon[0] + "," + gamesWon[1]);
-    endGame();
-  }
-  
-  for (int i = 0; i < gamesWon[1]; i++){
-    fill(255);
-    ellipse(x2+(gameCircle*i)+(gap*i),y,gameCircle-8,gameCircle-8);
+  for (int i = 0; i < gamesWon.length; i++) {
+    for (int j = 0; j < gamesWon[i]; j++) {
+      fill(255);
+      ellipse(x1 + (gameCircle * j) + (gap * j), y, gameCircle - 8, gameCircle - 8);
+    }
   }
   
   buttonPressed();
