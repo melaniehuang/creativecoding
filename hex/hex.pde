@@ -1,6 +1,12 @@
-String startColor = "FFFFFF";
-String endColor = "000000";
+String startColor = "FFAA00";
+String endColor = "00BBAA";
 int nSteps = 10;
+
+float[] rColors = new float[nSteps]; 
+float[] gColors = new float[nSteps]; 
+float[] bColors = new float[nSteps]; 
+
+//String[] stepColors = new String[nSteps]; 
 
 float r1;
 float g1;
@@ -14,10 +20,13 @@ void draw(){
  getColor1();
  getColor2();
  
- println(r1,g1,b1);
- println(r2,g2,b2);
+ rValues();
+ gValues();
+ bValues();
  
- defineGradient();
+ //println(r1,g1,b1);
+ //println(r2,g2,b2);
+ 
 }
 
 void getColor1(){
@@ -42,8 +51,38 @@ void getColor2(){
   b2 = unhex(bHex); 
 }
 
-void defineGradient(){
- float rInc = (r1-r2)/(nSteps-1);
- r1 = r1 - rInc;
- println(r1);
+void rValues(){ 
+ float rDiff = r1 - r2; 
+ float rSteps = rDiff/(nSteps-1);
+ 
+ for (int i=0; i < nSteps; i++) {
+   float r3 = r1-(rSteps*i);
+   rColors[i] = r3;
+ } 
+ println("R");
+ println(rColors);
+}
+
+void gValues(){ 
+ float gDiff = g1 - g2; 
+ float gSteps = gDiff/(nSteps-1);
+ 
+ for (int i=0; i < nSteps; i++) {
+   float g3 = g1-(gSteps*i);
+   gColors[i] = g3;
+ } 
+ println("G");
+ println(gColors);
+}
+
+void bValues(){ 
+ float bDiff = b1 - b2; 
+ float bSteps = bDiff/(nSteps-1);
+ 
+ for (int i=0; i < nSteps; i++) {
+   float b3 = b1-(bSteps*i);
+   bColors[i] = b3;
+ } 
+ println("B");
+ println(bColors);
 }
