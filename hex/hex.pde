@@ -1,13 +1,13 @@
-String startColor = "FFFFFF";
-String endColor = "000000";
+String startColor = "FFAA00";
+String endColor = "00BBAA";
 int nSteps = 10;
+int rgbValues = 3;
 
 int[] rColors = new int[nSteps]; 
 int[] gColors = new int[nSteps]; 
 int[] bColors = new int[nSteps]; 
 
-int[] rgbColors = new int[3*nSteps]; 
-//String[] stepColors = new String[nSteps]; 
+int[][] grad = new int[nSteps][rgbValues];
 
 float r1;
 float g1;
@@ -18,6 +18,7 @@ float g2;
 float b2;
 
 void draw(){
+ 
  getColor1();
  getColor2();
  
@@ -25,16 +26,22 @@ void draw(){
  gValues();
  bValues();
  
- for (int i = 0; i < nSteps; i = i+2){
-  rgbColors[i] = rColors[i];
-  rgbColors[i+1] = gColors[i];
-  rgbColors[i+2] = bColors[i];
- }
+ //println("R");
+ //println(rColors);
+ //println("G");
+ //println(gColors);
+ //println("B");
+ //println(bColors);
  
- println(rgbColors);
-
- //println(r1,g1,b1);
- //println(r2,g2,b2);
+ for (int i = 0; i < nSteps; i++){
+   grad[i][0] = rColors[i];
+   grad[i][1] = gColors[i];
+   grad[i][2] = bColors[i];
+   
+   color hexColor = color(rColors[i],gColors[i],bColors[i]);
+   println(i);
+   println(hex(hexColor,6));
+ }
  
 }
 
