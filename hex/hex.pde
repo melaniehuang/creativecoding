@@ -1,6 +1,7 @@
-String startColor = "FFAA00";
-String endColor = "00BBAA";
-int nSteps = 10;
+String[] gradValues = { "FFFFFF", "000000"};
+String startColor = "FFFFFF";
+int nSteps = 16;
+
 int rgbValues = 3;
 
 int[] rColors = new int[nSteps]; 
@@ -17,21 +18,20 @@ float r2;
 float g2;
 float b2;
 
+void setup(){
+  noLoop();
+}
+
 void draw(){
+ 
+ //gradient(startColor, endColor, 16);
  
  getColor1();
  getColor2();
- 
+
  rValues();
  gValues();
  bValues();
- 
- //println("R");
- //println(rColors);
- //println("G");
- //println(gColors);
- //println("B");
- //println(bColors);
  
  for (int i = 0; i < nSteps; i++){
    grad[i][0] = rColors[i];
@@ -42,29 +42,28 @@ void draw(){
    println(i);
    println(hex(hexColor,6));
  }
- 
 }
 
 void getColor1(){
-  String rHex = startColor.substring(0,2); 
-  r1 = unhex(rHex);
+ String rHex = gradValues[0].substring(0,2); 
+ r1 = unhex(rHex);
+    
+ String gHex = gradValues[0].substring(2,4); 
+ g1 = unhex(gHex);
   
-  String gHex = startColor.substring(2,4); 
-  g1 = unhex(gHex);
-
-  String bHex = startColor.substring(4); 
-  b1 = unhex(bHex);
+ String bHex = gradValues[0].substring(4); 
+ b1 = unhex(bHex);
 }
 
 void getColor2(){
-  String rHex = endColor.substring(0,2); 
-  r2 = unhex(rHex);
+ String rHex = gradValues[1].substring(0,2); 
+ r2 = unhex(rHex);
+    
+ String gHex = gradValues[1].substring(2,4); 
+ g2 = unhex(gHex);
   
-  String gHex = endColor.substring(2,4); 
-  g2 = unhex(gHex);
-
-  String bHex = endColor.substring(4); 
-  b2 = unhex(bHex); 
+ String bHex = gradValues[1].substring(4); 
+ b2 = unhex(bHex); 
 }
 
 void rValues(){ 
@@ -76,8 +75,6 @@ void rValues(){
    int r4 = int(r3);
    rColors[i] = r4;
  } 
- //println("R");
- //println(rColors);
 }
 
 void gValues(){ 
@@ -89,8 +86,6 @@ void gValues(){
   int g4 = int(g3);
   gColors[i] = g4;
  } 
- //println("G");
- //println(gColors);
 }
 
 void bValues(){ 
@@ -102,6 +97,4 @@ void bValues(){
   int b4 = int(b3);
   bColors[i] = b4;
  } 
- //println("B");
- //println(bColors);
 }
