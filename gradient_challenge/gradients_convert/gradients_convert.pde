@@ -1,38 +1,31 @@
 // convert a HEX to RGB
 // 0-9 = number + 10-16 = A-F
 
-String hexColor = "ABFFFD";
-char h1;
-char h2;
-char h3;
-char h4;
-char h5;
-char h6;
-
-int a;
-int b;
-int c;
-int d;
-int e;
-int f;
-
+void setup(){
+  noLoop();
+}
 
 void draw(){    
-  h1 = hexColor.charAt(0);
-  h2 = hexColor.charAt(1);
-  h3 = hexColor.charAt(2);
-  h4 = hexColor.charAt(3);
-  h5 = hexColor.charAt(4);
-  h6 = hexColor.charAt(5);
- 
-  a = asciiOffset(h1);
-  b = asciiOffset(h2);
-  c = asciiOffset(h3);
-  d = asciiOffset(h4);
-  e = asciiOffset(h5);
-  f = asciiOffset(h6);
+  int[] findRGBColor = masterConvert("FFAA00");  
+  println(findRGBColor);
+}
 
-  println((a*16)+b,(c*16)+d,(e*16)+f);
+int[] masterConvert(String hexColor){
+ char[] hexValues = new char[6]; 
+ int[] colorValues = new int[6];
+ int[] rgbValues = new int[3];
+
+ for (int i = 0; i < 3; i++){
+    int x = i*2;
+    hexValues[x] = hexColor.charAt(x);
+    hexValues[x+1] = hexColor.charAt(x+1);
+  
+    colorValues[x] = asciiOffset(hexValues[x]);
+    colorValues[x+1] = asciiOffset(hexValues[x+1]);
+    
+    rgbValues[i] = (colorValues[x]*16)+colorValues[x+1]; 
+  }
+  return rgbValues;
 }
 
 int asciiOffset(char h){
@@ -44,4 +37,3 @@ int asciiOffset(char h){
     return 0;
   }
 }
-  
